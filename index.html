@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Sheet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="background">
+        <!-- 5 perpendicular horizontal lines -->
+        <script>
+            const canvas = document.getElementById('background');
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width = window.innerWidth;
+            // const height = canvas.height = window.innerHeight;
+            const lineSpacing = 10;
+            const lineCount = 5;
+            const lineWidth = 1;
+            const lineColor = 'black';
+
+            ctx.strokeStyle = lineColor;
+            ctx.lineWidth = lineWidth;
+
+            for (let i = 0; i < lineCount; i++) {
+                ctx.beginPath();
+                ctx.moveTo(0,1 + i * lineSpacing);
+                ctx.lineTo(width,1 + i * lineSpacing);
+                ctx.stroke();
+            }
+        </script>
+    </canvas>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/archive/f/ff/20060427204838%21GClef.svg" alt="GKey" id="gkey">
+    <div id="noteSpaces">
+        <div class="noteSpace">
+        </div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+        <div class="noteSpace"></div>
+    </div>
+    <footer>
+        <!-- toolbar -->
+        <button class="letter" data-note="C">C</button>
+        <button class="letter" data-note="D">D</button>
+        <button class="letter" data-note="E">E</button>
+        <button class="letter" data-note="F">F</button>
+        <button class="letter" data-note="G">G</button>
+        <button class="letter" data-note="A">A</button>
+        <button class="letter" data-note="H">H</button>
+        <button id="deleteNoteSwitch">Del</button>
+        <input type="number" id="octaveNum" value="4" min="1" max="8">
+    </footer>   
+    <script src="script.js"></script>
+</body>
+</html>
