@@ -1,5 +1,6 @@
 const noteSpaces = document.querySelectorAll('.noteSpace');
 const letterBtns = document.querySelectorAll('.letter'); // C,D,E,F,G,A,H
+const deleteBtn = document.querySelector('#delete');
 const startC = 54; // C4 in px
 const octaveChange = 36;
 const singleNote = 5;
@@ -11,7 +12,11 @@ let currentLetter = ''; // change to empty string
 noteSpaces.forEach(noteSpace => {
     noteSpace.addEventListener('click', () => {
         // don't care about octave for now
-        console.log("noteSpace clicked");
+        if (!currentLetter) return;
+        if (currentLetter === 'DEL'){
+            noteSpace.innerHTML = '';
+            return;
+        }
         const note = document.createElement('div');
         note.classList.add('note');
         note.innerText = currentLetter;
@@ -30,5 +35,14 @@ letterBtns.forEach(letterBtn => {
                 btn.style.backgroundColor = '';
             }
         });
+        deleteBtn.style.backgroundColor = '';
+    });
+});
+
+deleteBtn.addEventListener('click', () => {
+    currentLetter = 'DEL';
+    deleteBtn.style.backgroundColor = currentLetter ? 'red' : '';
+    letterBtns.forEach(btn => {
+        btn.style.backgroundColor = '';
     });
 });
